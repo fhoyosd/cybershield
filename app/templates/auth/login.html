@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberShield | Iniciar Sesión</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/logo.png') }}" type="image/x-icon">
+</head>
+
+<body>
+    <div class="auth-container">
+        <div class="auth-left">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="CyberShield Logo" class="logo">
+            <h1>CyberShield</h1>
+            <p>Protegiendo tu mundo digital</p>
+        </div>
+
+        <div class="auth-right">
+            <form class="auth-form" method="POST" action="/login">
+                <h2>Iniciar Sesión</h2>
+
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                <div class="flash-container">
+                    {% for category, message in messages %}
+                    <div class="flash-message {{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% endwith %}
+
+                <div class="form-group">
+                    <label for="username">Usuario</label>
+                    <input type="text" id="username" name="username" placeholder="Ingresa tu usuario" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="password" name="password" placeholder="Contraseña" required>
+                        <button type="button" class="toggle-password" onclick="togglePassword('password', this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-eye" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="g-recaptcha" data-sitekey="{{ site_key }}"></div>
+
+                <button type="submit" class="btn-primary">Entrar</button>
+
+                <div class="auth-links">
+                    <a href="/forgot-password">¿Olvidaste tu contraseña?</a>
+                    <a href="/register">¿No tienes cuenta?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="{{ url_for('static', filename='js/toggle_password.js') }}"></script>
+</body>
+
+</html>

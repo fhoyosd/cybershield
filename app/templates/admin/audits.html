@@ -1,0 +1,30 @@
+{% extends "admin/base.html" %}
+{% block content %}
+<h3>Auditorías</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Actor</th>
+            <th>Acción</th>
+            <th>Target</th>
+            <th>Detalle</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for a in audits %}
+        <tr>
+            <td>{{ a.actor }}</td>
+            <td>{{ a.action }}</td>
+            <td>{{ a.target_type }} {{ a.target_id or '' }}</td>
+            <td>{{ a.detail }}</td>
+            <td>{{ a.timestamp }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="5">No hay registros</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

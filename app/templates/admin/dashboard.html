@@ -1,0 +1,36 @@
+{% extends "admin/base.html" %}
+{% block content %}
+<div class="grid">
+    <div class="card">
+        <h3>Usuarios recientes</h3>
+        <ul>
+            {% for u in users %}
+            <li>{{ u.username }} <small>{{ u.email }}</small></li>
+            {% else %}
+            <li>No hay usuarios</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="card">
+        <h3>Incidentes recientes</h3>
+        <ul>
+            {% for i in incidents %}
+            <li><a href="{{ url_for('admin.incidents_view', id=i._id) }}">{{ i.title }}</a> <small>{{ i.severity
+                    }}</small></li>
+            {% else %}
+            <li>No hay incidentes</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="card">
+        <h3>Últimas auditorías</h3>
+        <ul>
+            {% for a in audits %}
+            <li>{{ a.actor }} - {{ a.action }} <small>{{ a.timestamp }}</small></li>
+            {% else %}
+            <li>No hay auditorías</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

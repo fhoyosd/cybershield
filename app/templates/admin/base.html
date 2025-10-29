@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>CyberShield | Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/logo.png') }}">
+</head>
+
+<body>
+    <aside class="admin-sidebar">
+        <div class="brand">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo">
+            <h3>CyberShield</h3>
+        </div>
+        <nav>
+            <a href="{{ url_for('admin.dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('admin.users') }}">Usuarios</a>
+            <a href="{{ url_for('admin.incidents') }}">Incidentes</a>
+            <a href="{{ url_for('admin.evidences') }}">Evidencias</a>
+            <a href="{{ url_for('admin.audits') }}">Auditorías</a>
+        </nav>
+        <div class="admin-logout">
+            <form action="{{ url_for('auth.logout') }}" method="get">
+                <button type="submit">Cerrar sesión</button>
+            </form>
+        </div>
+    </aside>
+
+    <main class="admin-main">
+        <header class="admin-header">
+            <h2>{{ title if title else "Panel de administración" }}</h2>
+        </header>
+
+        <section class="admin-content">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <div class="flash-list">
+                {% for cat, msg in messages %}
+                <div class="flash {{ cat }}">{{ msg }}</div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
+
+            {% block content %}{% endblock %}
+        </section>
+    </main>
+</body>
+
+</html>

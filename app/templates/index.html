@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberShield | Seguridad Inteligente</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/logo.png') }}">
+</head>
+
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" class="logo">
+        <nav>
+            <a href="{{ url_for('auth.login') }}">Iniciar Sesión</a>
+            <a href="{{ url_for('auth.register') }}">Registrarse</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Bienvenido a <span>CyberShield</span></h1>
+            <p>Tu aliado en la gestión y monitoreo de incidentes de seguridad informática.</p>
+            <a href="{{ url_for('auth.login') }}" class="btn">Comenzar</a>
+        </section>
+
+        <section class="gallery" id="galeria">
+            <h2>Protegemos lo que más importa</h2>
+            <div class="gallery-container">
+                <img src="{{ url_for('static', filename='img/cyber1.jpg') }}" alt="Ciberseguridad 1">
+                <img src="{{ url_for('static', filename='img/cyber2.jpg') }}" alt="Ciberseguridad 2">
+                <img src="{{ url_for('static', filename='img/cyber3.jpg') }}" alt="Ciberseguridad 3">
+            </div>
+        </section>
+
+        <section class="about" id="nosotros">
+            <h2>Sobre Nosotros</h2>
+            <p>
+                En <strong>CyberShield</strong>, somos un equipo de expertos en ciberseguridad dedicados a
+                proteger la información de las empresas ante amenazas digitales.
+                Diseñamos soluciones inteligentes para prevenir, detectar y responder ante incidentes,
+                garantizando la continuidad de tus operaciones y la integridad de tus datos.
+            </p>
+        </section>
+
+        <section class="contact" id="contacto">
+            <h2>Contáctanos</h2>
+
+            <div class="contact-info">
+                <p><strong>📍 Dirección:</strong> Calle 45 # 23 - 18, Bogotá, Colombia</p>
+                <p><strong>📞 Teléfono:</strong> +57 310 456 7890</p>
+                <p><strong>✉️ Correo:</strong> soporte@cybershield.com</p>
+            </div>
+
+            <form class="contact-form" method="POST" action="#">
+                <input type="text" name="nombre" placeholder="Tu nombre" required>
+                <input type="email" name="email" placeholder="Tu correo" required>
+                <textarea name="mensaje" rows="4" placeholder="Escribe tu mensaje..." required></textarea>
+                <button type="submit" class="btn">Enviar mensaje</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 CyberShield — Todos los derechos reservados</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/scroll.js') }}"></script>
+</body>
+
+</html>

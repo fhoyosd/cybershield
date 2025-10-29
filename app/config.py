@@ -1,5 +1,12 @@
 import os
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 class Config:
-    SECRET_KEY = os.environ.get('SECRET_KEY', 'clave-secreta-cybershield')
+    SECRET_KEY = os.getenv("SECRET_KEY")
+    MONGO_URI = os.getenv("MONGO_URI")
+    RECAPTCHA_SITE_KEY = os.getenv("RECAPTCHA_SITE_KEY")
+    RECAPTCHA_SECRET_KEY = os.getenv("RECAPTCHA_SECRET_KEY")
     DEBUG = True

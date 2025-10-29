@@ -1,0 +1,17 @@
+{% extends "admin/base.html" %}
+{% block content %}
+<h3>{{ incident.title }}</h3>
+<p><strong>Tipo:</strong> {{ incident.type }} | <strong>Severidad:</strong> {{ incident.severity }}</p>
+<p>{{ incident.description }}</p>
+
+<h4>Evidencias</h4>
+<ul>
+    {% for e in evidences %}
+    <li><a href="{{ e.url }}" target="_blank">{{ e.filename }}</a> — {{ e.uploader }}</li>
+    {% else %}
+    <li>No hay evidencias</li>
+    {% endfor %}
+</ul>
+
+<a href="{{ url_for('admin.incidents_edit', id=incident._id) }}" class="btn-primary">Editar incidente</a>
+{% endblock %}

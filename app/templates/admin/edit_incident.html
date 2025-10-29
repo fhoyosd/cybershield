@@ -1,0 +1,19 @@
+{% extends "admin/base.html" %}
+{% block content %}
+<h3>Editar incidente</h3>
+<form method="post">
+    <label>Título</label>
+    <input name="title" value="{{ incident.title }}" required>
+    <label>Descripción</label>
+    <textarea name="description" rows="4">{{ incident.description }}</textarea>
+    <label>Responsable (username)</label>
+    <input name="assigned_to" value="{{ incident.assigned_to or '' }}">
+    <label>Estado</label>
+    <select name="status">
+        <option value="open" {% if incident.status=='open' %}selected{% endif %}>abierto</option>
+        <option value="in_progress" {% if incident.status=='in_progress' %}selected{% endif %}>en_progreso</option>
+        <option value="closed" {% if incident.status=='closed' %}selected{% endif %}>cerrado</option>
+    </select>
+    <button class="btn-primary" type="submit">Guardar</button>
+</form>
+{% endblock %}

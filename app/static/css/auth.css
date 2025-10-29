@@ -25,6 +25,10 @@ body {
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
 }
 
+.register {
+    height: 850px;
+}
+
 .auth-left {
     width: 50%;
     background-color: #0a0a0a;
@@ -101,11 +105,6 @@ body {
     background-color: #222;
 }
 
-.recaptcha-space {
-    height: 80px;
-    margin-bottom: 1.5rem;
-}
-
 .btn-primary {
     width: 100%;
     background-color: #2c7a7b;
@@ -140,10 +139,55 @@ body {
     color: #2c7a7b;
 }
 
+.register-links {
+    justify-content: center;
+    gap: 0.5rem;
+}
+
 .login-link a {
     color: #bbb;
     text-decoration: none;
     transition: 0.2s ease;
+}
+
+.g-recaptcha {
+    transform: scale(0.9);
+    transform-origin: 0 0;
+    justify-content: center;
+    display: flex;
+}
+
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.password-wrapper input {
+    width: 100%;
+    padding-right: 45px;
+    box-sizing: border-box;
+}
+
+.toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.toggle-password svg {
+    width: 22px;
+    height: 22px;
+    color: #333;
+    transition: color 0.2s ease;
+}
+
+.toggle-password:hover svg {
+    color: #0d1b2a;
 }
 
 @media (max-width: 850px) {
@@ -151,7 +195,9 @@ body {
         flex-direction: column;
         height: auto;
     }
-    .auth-left, .auth-right {
+
+    .auth-left,
+    .auth-right {
         width: 100%;
         border: none;
     }

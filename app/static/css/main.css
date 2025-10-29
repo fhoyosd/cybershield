@@ -1,0 +1,48 @@
+.flash-container {
+    margin-bottom: 1.5rem;
+}
+
+.flash-message {
+    padding: 0.8rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+    animation: fadeIn 0.4s ease;
+}
+
+.flash-message.success {
+    background-color: #1e3d35;
+    color: #2c7a7b;
+    border: 1px solid #2c7a7b;
+}
+
+.flash-message.error {
+    background-color: #3d1e1e;
+    color: #ff5c5c;
+    border: 1px solid #ff5c5c;
+}
+
+.flash-message.info {
+    background-color: #1e1e3d;
+    color: #7aa2ff;
+    border: 1px solid #7aa2ff;
+}
+
+.flash-message.danger {
+    background-color: #3d1e1e;
+    color: #ff5c5c;
+    border: 1px solid #ff5c5c;
+}
+
+.flash-message.warning {
+    background-color: #3d3d1e;
+    color: #ffcc00;
+    border: 1px solid #ffcc00;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}

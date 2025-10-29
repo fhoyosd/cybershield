@@ -1,0 +1,43 @@
+{% extends "admin/base.html" %}
+{% block content %}
+<h3>Evidencias</h3>
+
+<form method="post" action="{{ url_for('admin.evidences_add') }}">
+    <label>Incident ID</label><input name="incident_id" required>
+    <label>Filename</label><input name="filename">
+    <label>URL</label><input name="url">
+    <button class="btn-primary" type="submit">Agregar</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Archivo</th>
+            <th>Incident</th>
+            <th>Uploader</th>
+            <th>Fecha</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for e in evidences %}
+        <tr>
+            <td><a href="{{ e.url }}" target="_blank">{{ e.filename }}</a></td>
+            <td>{{ e.incident_id }}</td>
+            <td>{{ e.uploader }}</td>
+            <td>{{ e.uploaded_at }}</td>
+            <td>
+                <form method="post" action="{{ url_for('admin.evidences_delete') }}">
+                    <input type="hidden" name="evidence_id" value="{{ e._id }}">
+                    <button class="btn-danger" onclick="return confirm('Eliminar evidencia?')">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="5">No hay evidencias</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

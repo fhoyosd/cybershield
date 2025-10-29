@@ -1,0 +1,17 @@
+{% extends "admin/base.html" %}
+{% block content %}
+<h3>Crear incidente</h3>
+<form method="post">
+    <label>Título</label><input name="title" required>
+    <label>Descripción</label><textarea name="description" rows="4" required></textarea>
+    <label>Tipo</label><input name="tipo" placeholder="phishing, malware, etc." required>
+    <label>Severidad</label>
+    <select name="severidad">
+        <option>baja</option>
+        <option>media</option>
+        <option>alta</option>
+        <option>crítica</option>
+    </select>
+    <button class="btn-primary" type="submit">Crear</button>
+</form>
+{% endblock %}
