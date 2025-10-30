@@ -45,8 +45,3 @@ def create_app():
         print("Error al conectar con MongoDB:", e)
 
     return app
-
-@login_manager.user_loader
-def load_user(user_id):
-    user = UserModel.collection.find_one({"_id": user_id})
-    return user
