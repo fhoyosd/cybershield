@@ -23,12 +23,12 @@
             <td>
                 <form action="{{ url_for('admin.users_change_role') }}" method="post" style="display:inline">
                     <input type="hidden" name="username" value="{{ u.username }}">
-                    <select name="rol">
+                    <select name="role">
                         <option value="user" {% if u.rol=='user' %}selected{% endif %}>Usuario</option>
                         <option value="analyst" {% if u.rol=='analyst' %}selected{% endif %}>Analista</option>
                         <option value="admin" {% if u.rol=='admin' %}selected{% endif %}>Admin</option>
                     </select>
-                    <button type="submit">Actualizar</button>
+                    <button class="btn-edit" type="submit">Actualizar</button>
                 </form>
 
                 <form action="{{ url_for('admin.users_delete') }}" method="post" style="display:inline">

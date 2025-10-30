@@ -14,18 +14,15 @@
             <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo">
             <h3>CyberShield</h3>
         </div>
-        <nav>
+        <nav class="admin-nav">
             <a href="{{ url_for('admin.dashboard') }}">Dashboard</a>
             <a href="{{ url_for('admin.users') }}">Usuarios</a>
             <a href="{{ url_for('admin.incidents') }}">Incidentes</a>
             <a href="{{ url_for('admin.evidences') }}">Evidencias</a>
             <a href="{{ url_for('admin.audits') }}">Auditorías</a>
         </nav>
-        <div class="admin-logout">
-            <form action="{{ url_for('auth.logout') }}" method="get">
-                <button type="submit">Cerrar sesión</button>
-            </form>
-        </div>
+        <a href="{{ url_for('main.home')}}"><button class="btn-primary logout">Ir al inicio</button></a>
+        <a href="{{ url_for('auth.logout')}}"><button class="btn-primary logout" onclick="return(confirm('¿Deseas cerrar sesión?'))">Cerrar sesión</button></a>
     </aside>
 
     <main class="admin-main">

@@ -6,7 +6,7 @@
     <thead>
         <tr>
             <th>Título</th>
-            <th>Tipo</th>
+            <th>Categoría</th>
             <th>Severidad</th>
             <th>Estado</th>
             <th>Responsable</th>
@@ -16,13 +16,14 @@
     <tbody>
         {% for i in incidents %}
         <tr>
-            <td><a href="{{ url_for('admin.incidents_view', id=i._id) }}">{{ i.title }}</a></td>
-            <td>{{ i.type }}</td>
+            <td>{{ i.title }}</td>
+            <td>{{ i.category }}</td>
             <td>{{ i.severity }}</td>
             <td>{{ i.status }}</td>
             <td>{{ i.assigned_to or "-" }}</td>
             <td>
-                <a href="{{ url_for('admin.incidents_edit', id=i._id) }}">Editar</a>
+                <a href="{{ url_for('admin.incidents_view', id=i._id) }}"><button class="btn-view">Ver</button></a>
+                <a href="{{ url_for('admin.incidents_edit', id=i._id) }}"><button class="btn-edit">Editar</button></a>
                 <form action="{{ url_for('admin.incidents_delete', id=i._id) }}" method="post"
                     style="display:inline">
                     <button class="btn-danger" onclick="return confirm('Eliminar incidente?')">Eliminar</button>

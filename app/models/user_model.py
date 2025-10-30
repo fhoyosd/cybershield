@@ -3,6 +3,15 @@ from flask_login import UserMixin
 
 from datetime import datetime
 
+class User(UserMixin):
+    def __init__(self, user_data):
+        self.id = str(user_data["_id"])
+        self.username = user_data["username"]
+        self.email = user_data["email"]
+        self.role = user_data.get("role", "user")
+        self.fullname = user_data.get("fullname", "")
+        self.phone = user_data.get("phone", "")
+
 class UserModel:
     @staticmethod
     def collection():
@@ -90,13 +99,3 @@ class UserModel:
         if result.matched_count:
             return True, "Rol actualizado correctamente."
         return False, "Usuario no encontrado."
-    
-class User(UserMixin):
-    def __init__(self, user_dict):
-        self.id = str(user_dict["_id"])
-        self.username = user_dict["username"]
-        self.email = user_dict["email"]
-        self.role = user_dict.get("role", "user")
-        self.fullname = user_dict.get("fullname", "")
-        self.phone = user_dict.get("phone", "")
-        self.created_at = user_dict.get("created_at")

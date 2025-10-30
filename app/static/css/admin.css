@@ -18,6 +18,13 @@ body {
     border-right: 1px solid #151515;
 }
 
+.admin-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: 1rem;
+}
+
 .brand {
     display: flex;
     align-items: center;
@@ -122,6 +129,38 @@ body {
     border: none;
     border-radius: 6px;
     cursor: pointer;
+}
+
+.btn-edit {
+    background: #4a90e2;
+    color: #fff;
+    padding: 0.45rem 0.7rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-edit a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn-view {
+    background: #31b16a;
+    color: #fff;
+    padding: 0.45rem 0.7rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-view a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.logout {
+    margin-top: 1rem;
 }
 
 form input,
