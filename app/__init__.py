@@ -25,6 +25,14 @@ def create_app():
     login_manager.init_app(app)
 
     login_manager.login_view = "auth.login"
+    login_manager.login_message = "Por favor, inicia sesión para acceder a esta página."
+    login_manager.login_message_category = "info"
+
+    from app.models.user_model import UserModel
+
+    @login_manager.user_loader
+    def load_user(user_id):
+        return UserModel.get_by_id(user_id)
 
     app.register_blueprint(auth_bp)
     app.register_blueprint(main_bp)

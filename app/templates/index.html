@@ -13,8 +13,13 @@
     <header>
         <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" class="logo">
         <nav>
+            {% if current_user.is_authenticated %}
+            <a href="{{ url_for('admin.dashboard') }}">Ir al panel</a>
+            <a href="{{ url_for('auth.logout') }}">Cerrar sesión</a>
+            {% else %}
             <a href="{{ url_for('auth.login') }}">Iniciar Sesión</a>
             <a href="{{ url_for('auth.register') }}">Registrarse</a>
+            {% endif %}
         </nav>
     </header>
 
@@ -22,7 +27,11 @@
         <section class="hero">
             <h1>Bienvenido a <span>CyberShield</span></h1>
             <p>Tu aliado en la gestión y monitoreo de incidentes de seguridad informática.</p>
+            {% if not current_user.is_authenticated %}
             <a href="{{ url_for('auth.login') }}" class="btn">Comenzar</a>
+            {% else %}
+            <a href="{{ url_for('admin.dashboard') }}" class="btn">Panel</a>
+            {% endif %}
         </section>
 
         <section class="gallery" id="galeria">
