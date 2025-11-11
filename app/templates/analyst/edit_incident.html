@@ -1,0 +1,26 @@
+{% extends "analyst/base.html" %}
+{% block content %}
+<h3>Editar incidente</h3>
+
+<form method="post">
+    <label>Título</label>
+    <input name="title" value="{{ incident.title }}" required>
+
+    <label>Descripción</label>
+    <textarea name="description" rows="5">{{ incident.description }}</textarea>
+
+    <label>Estado</label>
+    <select name="status">
+        <option value="open" {% if incident.status=='open' %}selected{% endif %}>abierto</option>
+        <option value="in_progress" {% if incident.status=='in_progress' %}selected{% endif %}>en progreso</option>
+        <option value="closed" {% if incident.status=='closed' %}selected{% endif %}>cerrado</option>
+    </select>
+
+    <label><input type="checkbox" name="assign_self"> Asignarme a mí mismo</label>
+
+    <label>Nota (opcional)</label>
+    <textarea name="note" rows="3" placeholder="Observaciones..."></textarea>
+
+    <button class="btn-primary" type="submit">Guardar cambios</button>
+</form>
+{% endblock %}

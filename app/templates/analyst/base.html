@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>CyberShield | Admin</title>
+    <title>CyberShield | Analista</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/logo.png') }}">
 </head>
@@ -14,20 +14,22 @@
             <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo">
             <h3>CyberShield</h3>
         </div>
-        <nav class="admin-nav">
-            <a href="{{ url_for('admin.dashboard') }}">Panel</a>
-            <a href="{{ url_for('admin.users') }}">Usuarios</a>
-            <a href="{{ url_for('admin.incidents') }}">Incidentes</a>
-            <a href="{{ url_for('admin.evidences') }}">Evidencias</a>
-            <a href="{{ url_for('admin.audits') }}">Auditorías</a>
+        <nav>
+            <a href="{{ url_for('analyst.dashboard') }}">Panel</a>
+            <a href="{{ url_for('analyst.incidents') }}">Mis incidentes</a>
+            <a href="{{ url_for('analyst.incidents') }}?view=all">Todos los incidentes</a>
+            <a href="{{ url_for('analyst.evidences') }}">Evidencias</a>
         </nav>
-        <a href="{{ url_for('main.home')}}"><button class="btn-primary logout">Ir al inicio</button></a>
-        <a href="{{ url_for('auth.logout')}}"><button class="btn-primary logout" onclick="return(confirm('¿Deseas cerrar sesión?'))">Cerrar sesión</button></a>
+        <div class="admin-logout">
+            <a href="{{ url_for('main.home')}}"><button class="btn-primary logout">Ir al inicio</button></a>
+            <a href="{{ url_for('auth.logout')}}"><button class="btn-primary logout" onclick="return(confirm('¿Deseas cerrar sesión?'))">Cerrar sesión</button></a>
+        </div>
     </aside>
 
     <main class="admin-main">
         <header class="admin-header">
-            <h2>{{ title if title else "Panel de administración" }}</h2>
+            <h2>{{ title if title else "Panel de Analista" }}</h2>
+            <div class="user-info">Analista: {{ current_user.username }}</div>
         </header>
 
         <section class="admin-content">

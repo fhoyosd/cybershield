@@ -1,0 +1,29 @@
+{% extends "analyst/base.html" %}
+{% block content %}
+<h3>Evidencias</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Archivo</th>
+            <th>Incident ID</th>
+            <th>Subido por</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for e in evidences %}
+        <tr>
+            <td><a href="{{ e.url }}" target="_blank">{{ e.filename }}</a></td>
+            <td>{{ e.incident_id }}</td>
+            <td>{{ e.uploaded_by }}</td>
+            <td>{{ e.uploaded_at }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="4">No hay evidencias.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

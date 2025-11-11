@@ -1,0 +1,39 @@
+{% extends "analyst/base.html" %}
+{% block content %}
+<div class="grid">
+    <div class="card">
+        <h3>Incidentes asignados</h3>
+        <ul>
+            {% for i in assigned %}
+            <li><a href="{{ url_for('analyst.incident_view', incident_id=inc._id) }}">{{ i.title }}</a> <small>{{
+                    i.severity }}</small></li>
+            {% else %}
+            <li>No tienes incidentes asignados.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3>Incidentes recientes</h3>
+        <ul>
+            {% for i in recent %}
+            <li><a href="{{ url_for('analyst.incident_view', incident_id=inc._id) }}">{{ i.title }}</a> — {{ i.category }}
+            </li>
+            {% else %}
+            <li>No hay incidentes recientes.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3>Últimas auditorías</h3>
+        <ul>
+            {% for a in audits %}
+            <li>{{ a.actor }} — {{ a.action }} <small>{{ a.timestamp }}</small></li>
+            {% else %}
+            <li>No hay auditorías recientes.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

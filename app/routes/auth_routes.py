@@ -29,13 +29,12 @@ def login():
             login_user(user_obj)
             flash("Inicio de sesión exitoso.", "success")
 
-            return redirect(url_for("admin.dashboard"))
-            # if user_obj.role == "admin":
-            #     return redirect(url_for("admin.dashboard"))
-            # elif user_obj.role == "analyst":
-            #     return redirect(url_for("analyst.dashboard"))
-            # else:
-            #     return redirect(url_for("user.dashboard"))
+            if user_obj.role == "admin":
+                return redirect(url_for("admin.dashboard"))
+            elif user_obj.role == "analyst":
+                return redirect(url_for("analyst.dashboard"))
+            else:
+                return redirect(url_for("user.dashboard"))
 
         flash("Usuario o contraseña incorrectos.", "danger")
         return redirect(url_for("auth.login"))

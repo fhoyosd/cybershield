@@ -1,0 +1,31 @@
+{% extends "user/base.html" %}
+{% block content %}
+<h3>Reportar nuevo incidente</h3>
+
+<form method="post">
+    <label>Título</label>
+    <input name="title" required>
+
+    <label>Categoría</label>
+    <select name="category">
+        <option value="phishing">Phishing</option>
+        <option value="malware">Malware</option>
+        <option value="network">Red</option>
+        <option value="access">Acceso no autorizado</option>
+        <option value="other">Otro</option>
+    </select>
+
+    <label>Severidad</label>
+    <select name="severity">
+        <option value="low">Baja</option>
+        <option value="medium">Media</option>
+        <option value="high">Alta</option>
+        <option value="critical">Crítica</option>
+    </select>
+
+    <label>Descripción</label>
+    <textarea name="description" rows="5" required></textarea>
+
+    <button class="btn-primary" type="submit">Reportar incidente</button>
+</form>
+{% endblock %}

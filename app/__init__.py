@@ -11,6 +11,8 @@ from .config import Config
 from .routes.auth_routes import auth_bp
 from .routes.main_routes import main_bp
 from .routes.admin_routes import admin_bp
+from .routes.analyst_routes import analyst_bp
+from .routes.user_routes import user_bp
 
 mongo = PyMongo()
 bcrypt = Bcrypt()
@@ -37,6 +39,8 @@ def create_app():
     app.register_blueprint(auth_bp)
     app.register_blueprint(main_bp)
     app.register_blueprint(admin_bp)
+    app.register_blueprint(analyst_bp)
+    app.register_blueprint(user_bp)
 
     try:
         mongo.cx.server_info()

@@ -1,0 +1,32 @@
+{% extends "user/base.html" %}
+{% block content %}
+<h3>Mis incidentes reportados</h3>
+<a class="btn-primary" href="{{ url_for('user.incident_new') }}">+ Reportar nuevo incidente</a>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Título</th>
+        <th>Categoría</th>
+        <th>Severidad</th>
+        <th>Estado</th>
+        <th>Asignado a</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for inc in incidents %}
+        <tr>
+            <td>{{ inc.title }}</td>
+            <td>{{ inc.category }}</td>
+            <td>{{ inc.severity }}</td>
+            <td>{{ inc.status }}</td>
+            <td>{{ inc.assigned_to or "-" }}</td>
+            <td><a href="{{ url_for('user.incident_view', incident_id=inc._id) }}"><button class="btn-view">Ver</button></a></td>
+        </tr>
+    {% else %}
+        <tr><td colspan="6">No has reportado incidentes todavía.</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

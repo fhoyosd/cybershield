@@ -1,0 +1,30 @@
+{% extends "user/base.html" %}
+{% block content %}
+<h3>{{ incident.title }}</h3>
+<p><strong>Categoría:</strong> {{ incident.category }} | <strong>Severidad:</strong> {{ incident.severity }}</p>
+<p><strong>Estado:</strong> {{ incident.status }} | <strong>Asignado a:</strong> {{ incident.assigned_to or "-" }}</p>
+
+<hr>
+<h4>Descripción</h4>
+<p>{{ incident.description }}</p>
+
+<hr>
+<h4>Evidencias</h4>
+<ul>
+    {% for e in evidences %}
+        <li><a href="{{ e.url }}" target="_blank">{{ e.filename }}</a></li>
+    {% else %}
+        <li>No hay evidencias.</li>
+    {% endfor %}
+</ul>
+
+<hr>
+<h4>Añadir evidencia</h4>
+<form method="post" action="{{ url_for('user.evidence_add', incident_id=incident._id) }}">
+    <label>Nombre del archivo</label>
+    <input name="filename" placeholder="captura.png">
+    <label>URL</label>
+    <input name="url" placeholder="https://...">
+    <button class="btn-primary" type="submit">Agregar evidencia</button>
+</form>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "analyst/base.html" %}
+{% block content %}
+<h3>{% if view == 'all' %}Todos los incidentes{% else %}Mis incidentes{% endif %}</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Categoría</th>
+            <th>Severidad</th>
+            <th>Estado</th>
+            <th>Responsable</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for inc in incidents %}
+        <tr>
+            <td>{{ inc.title }}</td>
+            <td>{{ inc.category }}</td>
+            <td>{{ inc.severity }}</td>
+            <td>{{ inc.status }}</td>
+            <td>{{ inc.assigned_to or '-' }}</td>
+            <td>
+                <a href="{{ url_for('analyst.incident_view', incident_id=inc._id) }}"><button class="btn-view">Ver</button></a>
+                <a href="{{ url_for('analyst.incident_edit', incident_id=inc._id) }}"><button class="btn-edit">Editar</button></a>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="6">No hay incidentes para mostrar.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

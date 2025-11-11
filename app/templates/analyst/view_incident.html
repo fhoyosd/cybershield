@@ -1,0 +1,33 @@
+{% extends "analyst/base.html" %}
+{% block content %}
+<h3>{{ incident.title }}</h3>
+<p><strong>Categoría:</strong> {{ incident.category }} | <strong>Severidad:</strong> {{ incident.severity }}</p>
+<p><strong>Estado:</strong> {{ incident.status }} | <strong>Responsable:</strong> {{ incident.assigned_to or '-' }}</p>
+
+<hr>
+<h4>Descripción</h4>
+<p>{{ incident.description }}</p>
+
+<hr>
+<h4>Evidencias</h4>
+<ul>
+    {% for e in evidences %}
+    <li><a href="{{ e.url }}" target="_blank">{{ e.filename }}</a> — {{ e.uploaded_by }}</li>
+    {% else %}
+    <li>No hay evidencias.</li>
+    {% endfor %}
+</ul>
+
+<hr>
+<h4>Añadir evidencia</h4>
+<form action="{{ url_for('analyst.evidence_add', incident_id=incident._id) }}" method="post">
+    <label>Nombre de archivo (opcional)</label>
+    <input name="filename" placeholder="nombre.png">
+    <label>URL (opcional)</label>
+    <input name="url" placeholder="https://...">
+    <button class="btn-primary" type="submit">Agregar evidencia</button>
+</form>
+
+<hr>
+<a class="btn-primary" href="{{ url_for('analyst.incident_edit', incident_id=incident._id) }}">Editar incidente</a>
+{% endblock %}
